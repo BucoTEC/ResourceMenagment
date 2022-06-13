@@ -1,12 +1,12 @@
 {
-	"name": "expressTemplate",
+	"name": "express-template",
 	"version": "1.0.0",
 	"main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "tsc & node .",
-    "dev": "tsc -w & nodemon ."
-  },
+	"scripts": {
+		"build": "tsc",
+		"start": "tsc & node .",
+		"dev": "tsc -w & nodemon ."
+	},
 	"author": "Adnan Bucalovic <adnan.bucalovic13@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
