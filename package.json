@@ -1,10 +1,22 @@
 {
-  "name": "expressTemplate",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Adnan Bucalovic <adnan.bucalovic13@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.18.1"
-  }
+	"name": "expressTemplate",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc & node .",
+    "dev": "tsc -w & nodemon ."
+  },
+	"author": "Adnan Bucalovic <adnan.bucalovic13@gmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"express": "^4.18.1"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.13",
+		"@types/node": "^17.0.42",
+		"nodemon": "^2.0.16",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^4.7.3"
+	}
 }
