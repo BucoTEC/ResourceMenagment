@@ -11,21 +11,21 @@ const DUMMY_GROUPS = [
   {
     id: 2,
     owner: 'ownerID',
-    name: 'grupa 1',
+    name: 'grupa 2',
     parent: 1,
     children: [3]
   },
   {
     id: 3,
     owner: 'ownerID',
-    name: 'grupa 1',
+    name: 'grupa 3',
     parent: 2,
     children: [4]
   },
   {
     id: 4,
     owner: 'ownerID',
-    name: 'grupa 1',
+    name: 'grupa 4',
     parent: 3,
     children: []
   }
@@ -93,6 +93,8 @@ export const resolvers = {
           console.log(gr);
         }
       }
+
+      return DUMMY_GROUPS.filter((gr) => gr.parent === parent.id);
 
       //   return DUMMY_GROUPS.filter((group) => {
       //     for (const child of parent.children) {
