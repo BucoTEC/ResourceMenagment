@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-express';
 const types = gql`
   type Admin {
     id: ID
-    name: String
+    username: String
     email: String
     password: String
   }
