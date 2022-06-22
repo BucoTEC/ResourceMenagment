@@ -22,6 +22,25 @@ const types = gql`
     parent: Group
     title: string
   }
+
+  input registerInput {
+    username: String!
+    password: String!
+    confirmPassword: String!
+    email: String!
+  }
+
+  type Query {
+    allGroups: [Group]
+    group(id: ID!): Group
+    allEntities: [Entity]
+    entity(id: ID!): Entity
+  }
+
+  type Mutation {
+    register(registerInput: registerInput): Admin!
+    login(username: String!, password: String!): Admin!
+  }
 `;
 
 export default types;
