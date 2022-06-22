@@ -1,33 +1,73 @@
 import { gql } from 'apollo-server-express';
 
+const DUMMY_ADMIN = [
+  {
+    id: 1,
+    username: 'PRVI ADMIN',
+    email: 'prviadmin@mail.com',
+    password: '123'
+  }
+];
+
+const DUMMY_ENTITIES = [
+  {
+    id: 1,
+    owner: 1,
+    parent: 2,
+    title: 'SAFET'
+  },
+  {
+    id: 2,
+    owner: 1,
+    parent: 2,
+    title: 'ADVAN'
+  },
+  {
+    id: 3,
+    owner: 1,
+    parent: 2,
+    title: 'ADNAN'
+  },
+  {
+    id: 4,
+    owner: 1,
+    parent: 2,
+    title: 'ARMAN'
+  }
+];
+
 const DUMMY_GROUPS = [
   {
     id: 1,
     owner: 'ownerID',
     name: 'grupa 1',
     parent: '',
-    children: [2]
+    subgroups: [2],
+    entities: [1]
   },
   {
     id: 2,
     owner: 'ownerID',
     name: 'grupa 2',
     parent: 1,
-    children: [3]
+    subgroups: [3],
+    entities: [1]
   },
   {
     id: 3,
     owner: 'ownerID',
     name: 'grupa 3',
     parent: 2,
-    children: [4]
+    subgroups: [4],
+    entities: [1]
   },
   {
     id: 4,
     owner: 'ownerID',
     name: 'grupa 4',
     parent: 3,
-    children: []
+    subgroups: [],
+    entities: [1]
   }
 ];
 
@@ -44,7 +84,8 @@ const types = gql`
     owner: Admin
     name: String
     parent: ID
-    children: [Group]
+    subgroups: [Group]
+    entities: [Entity]
   }
 
   type Entity {
@@ -86,23 +127,16 @@ export const resolvers = {
   },
   Group: {
     // eslint-disable-next-line
-    children(parent: any) {
-      //   console.log(parent);
-      for (const gr of DUMMY_GROUPS) {
-        if (gr.parent === parent.id) {
-          console.log(gr);
-        }
-      }
-
+    owenr(parent: any) {
+      return DUMMY_ADMIN.find((ad) => ad.id === parent.owenr);
+    },
+    // eslint-disable-next-line
+    subgroups(parent: any) {
       return DUMMY_GROUPS.filter((gr) => gr.parent === parent.id);
-
-      //   return DUMMY_GROUPS.filter((group) => {
-      //     for (const child of parent.children) {
-      //       if (child.id === group.id) {
-      //         return child;
-      //       }
-      //     }
-      //   });
+    },
+    // eslint-disable-next-line
+    entities(parent: any) {
+      return DUMMY_ENTITIES.filter((ent) => ent.parent === parent.id);
     }
   }
 };
