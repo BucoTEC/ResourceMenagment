@@ -20,7 +20,7 @@ const types = gql`
     id: ID
     owner: Admin
     parent: Group
-    title: string
+    title: String
   }
 
   input registerInput {
@@ -31,6 +31,7 @@ const types = gql`
   }
 
   type Query {
+    hello: String
     allGroups: [Group]
     group(id: ID!): Group
     allEntities: [Entity]
@@ -43,4 +44,20 @@ const types = gql`
   }
 `;
 
+export const resolvers = {
+  Query: {
+    hello() {
+      return 'world';
+    },
+    allGroups() {
+      return 'all groups';
+    }
+  },
+  Group: {
+    // eslint-disable-next-line
+    children(parent: any) {
+      console.log(parent);
+    }
+  }
+};
 export default types;

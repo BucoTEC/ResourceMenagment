@@ -1,21 +1,22 @@
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
+import typeDefs, { resolvers } from './graphql/typeDefs';
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+// const typeDefs = gql`
+//   type Query {
+//     hello: String
+//   }
+// `;
 
-const resolvers = {
-  Query: {
-    hello() {
-      return 'world';
-    }
-  }
-};
+// const resolvers = {
+//   Query: {
+//     hello() {
+//       return 'world';
+//     }
+//   }
+// };
 
 async function listen(port: number) {
   const app = express();
