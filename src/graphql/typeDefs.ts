@@ -1,5 +1,36 @@
 import { gql } from 'apollo-server-express';
 
+const DUMMY_GROUPS = [
+  {
+    id: 1,
+    owner: 'ownerID',
+    name: 'grupa 1',
+    parent: '',
+    children: [2]
+  },
+  {
+    id: 2,
+    owner: 'ownerID',
+    name: 'grupa 1',
+    parent: 1,
+    children: [3]
+  },
+  {
+    id: 3,
+    owner: 'ownerID',
+    name: 'grupa 1',
+    parent: 2,
+    children: [4]
+  },
+  {
+    id: 4,
+    owner: 'ownerID',
+    name: 'grupa 1',
+    parent: 3,
+    children: []
+  }
+];
+
 const types = gql`
   type Admin {
     id: ID
@@ -50,13 +81,26 @@ export const resolvers = {
       return 'world';
     },
     allGroups() {
-      return 'all groups';
+      return DUMMY_GROUPS;
     }
   },
   Group: {
     // eslint-disable-next-line
     children(parent: any) {
-      console.log(parent);
+      //   console.log(parent);
+      for (const gr of DUMMY_GROUPS) {
+        if (gr.parent === parent.id) {
+          console.log(gr);
+        }
+      }
+
+      //   return DUMMY_GROUPS.filter((group) => {
+      //     for (const child of parent.children) {
+      //       if (child.id === group.id) {
+      //         return child;
+      //       }
+      //     }
+      //   });
     }
   }
 };
