@@ -127,7 +127,7 @@ export const resolvers = {
   },
   Group: {
     // eslint-disable-next-line
-    owenr(parent: any) {
+    owner(parent: any) {
       return DUMMY_ADMIN.find((ad) => ad.id === parent.owenr);
     },
     // eslint-disable-next-line
