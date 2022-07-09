@@ -4,7 +4,7 @@
 	"main": "dist/index.js",
 	"scripts": {
 		"lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx ./",
-		"prettier:write": "yarn pretty-quick",
+		"prettier:write": "yarn pretty-quick --branch main",
 		"build": "tsc",
 		"start": "tsc & node .",
 		"dev": "tsc -w & nodemon .",
