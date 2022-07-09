@@ -39,7 +39,7 @@ const DUMMY_ENTITIES = [
 const DUMMY_GROUPS = [
   {
     id: 1,
-    owner: '1',
+    owner: 1,
     name: 'grupa 1',
     parent: '',
     subgroups: [2],
@@ -47,7 +47,7 @@ const DUMMY_GROUPS = [
   },
   {
     id: 2,
-    owner: '1',
+    owner: 1,
     name: 'grupa 2',
     parent: 1,
     subgroups: [3],
@@ -55,7 +55,7 @@ const DUMMY_GROUPS = [
   },
   {
     id: 3,
-    owner: '1',
+    owner: 1,
     name: 'grupa 3',
     parent: 2,
     subgroups: [4],
@@ -63,7 +63,7 @@ const DUMMY_GROUPS = [
   },
   {
     id: 4,
-    owner: '1',
+    owner: 1,
     name: 'grupa 4',
     parent: 3,
     subgroups: [],
