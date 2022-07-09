@@ -123,6 +123,9 @@ export const resolvers = {
     },
     allGroups() {
       return DUMMY_GROUPS;
+    },
+    group(parent: any, args: any) {
+      return DUMMY_GROUPS.find((gr) => gr.id === args.id);
     }
   },
   Group: {
@@ -132,6 +135,8 @@ export const resolvers = {
     },
     // eslint-disable-next-line
     subgroups(parent: any) {
+      console.log(parent.id);
+
       return DUMMY_GROUPS.filter((gr) => gr.parent === parent.id);
     },
     // eslint-disable-next-line
