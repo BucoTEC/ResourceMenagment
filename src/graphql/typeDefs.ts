@@ -128,8 +128,6 @@ export const resolvers = {
   Group: {
     // eslint-disable-next-line
     owner(parent: any) {
-      console.log(parent.owner);
-
       return DUMMY_ADMIN.find((ad) => ad.id === parent.owner);
     },
     // eslint-disable-next-line
