@@ -125,6 +125,8 @@ export const resolvers = {
       return DUMMY_GROUPS;
     },
     group(parent: any, args: any) {
+      console.log('hello from parrent');
+
       return DUMMY_GROUPS.find((gr) => gr.id === args.id);
     }
   },
