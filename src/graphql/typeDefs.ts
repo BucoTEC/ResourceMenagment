@@ -6,6 +6,13 @@ const DUMMY_ADMIN = [
     username: 'PRVI ADMIN',
     email: 'prviadmin@mail.com',
     password: '123'
+  },
+
+  {
+    id: 2,
+    username: 'DRUGI ADMIN',
+    email: 'drugiadmin@mail.com',
+    password: '123'
   }
 ];
 
