@@ -158,3 +158,4 @@ export const resolvers = {
   }
 };
 export default types;
+console.log('test');
