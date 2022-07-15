@@ -4,21 +4,6 @@ import express from 'express';
 import http from 'http';
 import typeDefs, { resolvers } from './graphql/typeDefs';
 
-// const typeDefs = gql`
-//   type Query {
-//     hello: String
-//   }
-// `;
-
-// const resolvers = {
-//   Query: {
-//     hello() {
-//       return 'world';
-//     }
-//   }
-// };
-
-// test
 async function listen(port: number) {
   const app = express();
   const httpServer = http.createServer(app);
