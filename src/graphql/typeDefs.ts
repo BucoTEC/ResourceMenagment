@@ -151,9 +151,10 @@ export const resolvers = {
     },
     // eslint-disable-next-line
     entities(parent: any) {
-      return DUMMY_ENTITIES.filter((ent) => ent.parent === parent.id);
+      return DUMMY_ENTITIES.filter((ent) => ent.parent == parent.id);
     }
-  }
+  },
+  Entity: {}
 };
 export default types;
 console.log('test');
