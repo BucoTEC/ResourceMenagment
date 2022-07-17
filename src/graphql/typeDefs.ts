@@ -131,10 +131,8 @@ export const resolvers = {
     allGroups() {
       return DUMMY_GROUPS;
     },
-    group(parent: unknown, args: any) {
-      console.log('hello from parrent');
-
-      return DUMMY_GROUPS.find((gr) => gr.id === args.id);
+    group(parent: any, args: any) {
+      return DUMMY_GROUPS.find((gr) => gr.id == args.id);
     },
     allEntities() {
       return DUMMY_ENTITIES;
