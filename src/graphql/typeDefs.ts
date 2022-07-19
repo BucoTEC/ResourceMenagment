@@ -157,6 +157,9 @@ export const resolvers = {
   Entity: {
     owner(parent: any) {
       return DUMMY_ADMIN.find((ad) => ad.id === parent.owner);
+    },
+    parent(parent: any) {
+      return DUMMY_GROUPS.find((ad) => ad.id === parent.parent);
     }
   }
 };
