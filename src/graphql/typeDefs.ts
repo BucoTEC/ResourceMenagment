@@ -154,7 +154,11 @@ export const resolvers = {
       return DUMMY_ENTITIES.filter((ent) => ent.parent == parent.id);
     }
   },
-  Entity: {}
+  Entity: {
+    owner(parent: any) {
+      return DUMMY_ADMIN.find((ad) => ad.id === parent.owner);
+    }
+  }
 };
 export default types;
 console.log('test');
