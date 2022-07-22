@@ -78,6 +78,30 @@ const DUMMY_GROUPS = [
   }
 ];
 
+type uuid = string | number;
+interface Admin {
+  id: uuid;
+  username: string;
+  email: string;
+  password: string;
+}
+
+interface Group {
+  id: uuid;
+  owner: Admin;
+  name: string;
+  parent: uuid;
+  subgroups: [Group];
+  entities: [Entity];
+}
+
+interface Entity {
+  id: uuid;
+  owner: Admin;
+  parent: Group;
+  title: string;
+}
+
 const types = gql`
   type Admin {
     id: ID
