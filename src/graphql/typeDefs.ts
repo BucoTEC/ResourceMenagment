@@ -162,26 +162,23 @@ export const resolvers = {
     }
   },
   Group: {
-    // eslint-disable-next-line
     owner(parent: Group) {
       return DUMMY_ADMIN.find((ad) => ad.id === parent.owner);
     },
-    // eslint-disable-next-line
-    subgroups(parent: any) {
+    subgroups(parent: Group) {
       console.log(parent.id);
 
       return DUMMY_GROUPS.filter((gr) => gr.parent === parent.id);
     },
-    // eslint-disable-next-line
-    entities(parent: any) {
+    entities(parent: Group) {
       return DUMMY_ENTITIES.filter((ent) => ent.parent == parent.id);
     }
   },
   Entity: {
-    owner(parent: any) {
+    owner(parent: Group) {
       return DUMMY_ADMIN.find((ad) => ad.id === parent.owner);
     },
-    parent(parent: any) {
+    parent(parent: Group) {
       return DUMMY_GROUPS.find((ad) => ad.id === parent.parent);
     }
   }
