@@ -1,6 +1,30 @@
 import { gql } from 'apollo-server-express';
 
-const DUMMY_ADMIN = [
+type uuid = string | number | null;
+interface Admin {
+  id: uuid;
+  username: string;
+  email: string;
+  password: string;
+}
+
+interface Group {
+  id: uuid;
+  owner: uuid;
+  name: string;
+  parent: uuid;
+  subgroups: [uuid?];
+  entities: [uuid];
+}
+
+interface Entity {
+  id: uuid;
+  owner: uuid;
+  parent: uuid;
+  title: string;
+}
+
+const DUMMY_ADMIN: Array<Admin> = [
   {
     id: 1,
     username: 'PRVI ADMIN',
@@ -16,7 +40,7 @@ const DUMMY_ADMIN = [
   }
 ];
 
-const DUMMY_ENTITIES = [
+const DUMMY_ENTITIES: Array<Entity> = [
   {
     id: 1,
     owner: 1,
@@ -43,7 +67,7 @@ const DUMMY_ENTITIES = [
   }
 ];
 
-const DUMMY_GROUPS = [
+const DUMMY_GROUPS: Array<Group> = [
   {
     id: 1,
     owner: 1,
@@ -77,31 +101,6 @@ const DUMMY_GROUPS = [
     entities: [1]
   }
 ];
-
-type uuid = string | number;
-interface Admin {
-  id: uuid;
-  username: string;
-  email: string;
-  password: string;
-}
-
-interface Group {
-  id: uuid;
-  owner: Admin;
-  name: string;
-  parent: uuid;
-  subgroups: [Group];
-  entities: [Entity];
-}
-
-interface Entity {
-  id: uuid;
-  owner: Admin;
-  parent: Group;
-  title: string;
-}
-
 const types = gql`
   type Admin {
     id: ID
@@ -164,7 +163,7 @@ export const resolvers = {
   },
   Group: {
     // eslint-disable-next-line
-    owner(parent: any) {
+    owner(parent: Group) {
       return DUMMY_ADMIN.find((ad) => ad.id === parent.owner);
     },
     // eslint-disable-next-line
