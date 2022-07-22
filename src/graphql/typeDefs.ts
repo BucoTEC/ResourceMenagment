@@ -154,7 +154,7 @@ export const resolvers = {
     allGroups() {
       return DUMMY_GROUPS;
     },
-    group(parent: any, args: any) {
+    group(parent: Group, args: { id: string }) {
       return DUMMY_GROUPS.find((gr) => gr.id == args.id);
     },
     allEntities() {
