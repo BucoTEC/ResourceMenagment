@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server-express';
-
+import { prisma } from '../index';
 type uuid = string | number | null;
 interface User {
   id: uuid;
@@ -151,8 +151,9 @@ export const resolvers = {
     hello() {
       return 'world';
     },
-    allGroups() {
-      return DUMMY_GROUPS;
+    async allGroups() {
+      const all = await prisma.group.findMany();
+      return all;
     },
     group(parent: Group, args: { id: string }) {
       return DUMMY_GROUPS.find((gr) => gr.id == args.id);

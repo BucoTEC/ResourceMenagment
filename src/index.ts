@@ -4,6 +4,10 @@ import express from 'express';
 import http from 'http';
 import typeDefs, { resolvers } from './graphql/typeDefs';
 
+import { PrismaClient } from '@prisma/client';
+
+export const prisma = new PrismaClient();
+
 async function listen(port: number) {
   const app = express();
   const httpServer = http.createServer(app);
@@ -31,4 +35,10 @@ async function main() {
   }
 }
 
-void main();
+void main()
+  .catch((e) => {
+    throw e;
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
