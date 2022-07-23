@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-express';
 
 type uuid = string | number | null;
-interface Admin {
+interface User {
   id: uuid;
   username: string;
   email: string;
@@ -24,7 +24,7 @@ interface Entity {
   title: string;
 }
 
-const DUMMY_ADMIN: Array<Admin> = [
+const DUMMY_ADMIN: Array<User> = [
   {
     id: 1,
     username: 'PRVI ADMIN',
@@ -102,7 +102,7 @@ const DUMMY_GROUPS: Array<Group> = [
   }
 ];
 const types = gql`
-  type Admin {
+  type User {
     id: ID
     username: String
     email: String
@@ -111,7 +111,7 @@ const types = gql`
 
   type Group {
     id: ID
-    owner: Admin
+    owner: User
     name: String
     parent: ID
     subgroups: [Group]
@@ -120,7 +120,7 @@ const types = gql`
 
   type Entity {
     id: ID
-    owner: Admin
+    owner: User
     parent: Group
     title: String
   }
@@ -141,8 +141,8 @@ const types = gql`
   }
 
   type Mutation {
-    register(registerInput: registerInput): Admin!
-    login(username: String!, password: String!): Admin!
+    register(registerInput: registerInput): User!
+    login(username: String!, password: String!): User!
   }
 `;
 
